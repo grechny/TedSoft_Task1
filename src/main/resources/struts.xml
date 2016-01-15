@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <package name="default" extends="struts-default, json-default">
+        <interceptors>
+            <interceptor-stack name="defaultStack">
+                <interceptor-ref name="json">
+                    <param name="enableSMD">true</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <action name="webApp" class="ie.globalcom.WebAppAction" method="execute">
+            <result name="success">/webApp.jsp</result>
+        </action>
+        <action name="jsonData" class="ie.globalcom.JsonDataAction">
+            <result type="json" />
+        </action>
+    </package>
+</struts>
